@@ -83,6 +83,16 @@
         const seconds = now.getSeconds();
         const secondsDegree = ((seconds / 60) * 360) + 90;
         SecHand.style.transform = `rotate(${secondsDegree}deg)`;
+        if(seconds == 0) {
+          SecHand.style.transition = null;
+          transformValue = `rotate(0deg)`;
+        }
+        else {
+          transformValue = `rotate(${secondsDegree}deg)`;
+        }
+
+        SecHand.style.transform = transformValue;
+        //SecHand.style.transition = `all 0.3s`;
 
         // Minutes
         const minutes = now.getMinutes();

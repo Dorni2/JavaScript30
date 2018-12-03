@@ -96,6 +96,48 @@
   </div>
 
 <script>
+  let items = document.querySelectorAll('input');
+  items.forEach((item) => {
+    item.addEventListener('click', checkItem)
+  })
+
+  // function checkItem(e) {
+  //   if (e.shiftKey && e.srcElement.checked) {
+  //     items = document.querySelectorAll('input');
+  //     toCheck = false;
+  //     for(let item in items) {
+  //       if(items[item] === e.srcElement) { break; }
+  //       if(items[item].checked) { toCheck = true; }
+  //       items[item].checked = toCheck;
+  //     }
+  //   }
+  // }
+
+    function checkItem(e) {
+    if (e.shiftKey && e.srcElement.checked) {
+      items = document.querySelectorAll('input');      
+      let lastChecked;
+      for(var item in items) {
+        if(items[item] === e.srcElement) { break; }
+        if(items[item].checked) {
+           lastChecked = items[item];
+          }
+      }
+
+      isBetween = false
+      for (var item in items) {
+        if(items[item] == lastChecked) {
+          isBetween = true;
+        }
+        if (isBetween) {
+          items[item].checked = true;
+        }
+
+        if (items[item] === e.srcElement) { isBetween = false }
+      }
+
+    }
+  }
 </script>
 </body>
 </html>
